@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Переклад сайту</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f0f0f0;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin-left: 10px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        button:hover {
+            background-color: #e0e0e0;
+        }
+
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <img src="logo.png" alt="Логотип" style="height: 40px;">
+        </div>
+        <div>
+            <button onclick="changeLanguage('en')">English</button>
+            <button onclick="changeLanguage('es')">Español</button>
+            <button onclick="changeLanguage('ru')">Русский</button>
+        </div>
+    </header>
+
+    <main>
+        <h1>Ласкаво просимо на наш сайт!</h1>
+        <p>Це приклад сторінки, яка використовує Google Translate для автоматичного перекладу на різні мови.</p>
+    </main>
+
+    <!-- Google Translate Widget -->
+    <div id="google_translate_element" style="display: none;"></div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'uk',
+                includedLanguages: 'en,es,ru',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+
+        function changeLanguage(lang) {
+            var selectField = document.querySelector("select.goog-te-combo");
+            if (selectField) {
+                selectField.value = lang;
+                selectField.dispatchEvent(new Event("change"));
+            }
+        }
+
+        // Load Google Translate script
+        (function () {
+            var gtScript = document.createElement('script');
+            gtScript.type = 'text/javascript';
+            gtScript.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+            document.body.appendChild(gtScript);
+        })();
+    </script>
+
+</body>
+
+</html>
